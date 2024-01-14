@@ -9,3 +9,5 @@
 
 - NEW merge resolved :)
 
+
+- Added food: Candies
