@@ -6,4 +6,3 @@
 - drawing
 
 - a very fun hobby
-- Last step of the lab
