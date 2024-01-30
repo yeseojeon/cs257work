@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS states;
+DROP TABLE states;
 CREATE TABLE states (
   state text,
   abbreviation text
 );
 
-DROP TABLE IF EXISTS us cities;
-CREATE TABLE us cities (
+DROP TABLE us-cities;
+CREATE TABLE us-cities (
   city text,
   state text,
   population int,
