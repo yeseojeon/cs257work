@@ -16,13 +16,11 @@ def test_connection():
         else:
             print("Not Connected.")
 
-        # SQL statements to drop and create the "states" table
         drop_states_sql = """ DROP TABLE IF EXISTS states; """
         create_states_sql = """
             CREATE TABLE states (state text, abbreviation text);
         """
 
-        # SQL statements to drop and create the "us_cities" table
         drop_cities_sql = """ DROP TABLE IF EXISTS us_cities; """
         create_cities_sql = """
             CREATE TABLE us_cities (
@@ -42,5 +40,13 @@ def test_connection():
         cur.execute(sql.SQL(create_cities_sql))
 
         conn.commit()
+
+    except psycopg2.Error as e:
+        print("Error:", e)
+
+    finally:
+        if conn is not None:
+            conn.close()
+            print("Connection closed.")
 
 test_connection()
