@@ -43,14 +43,4 @@ def test_connection():
 
         conn.commit()
 
-    except psycopg2.Error as e:
-        print("Error:", e)
-
-    finally:
-        # Close the database connection, whether the operation was successful or not
-        if conn is not None:
-            conn.close()
-            print("Connection closed.")
-
-# Call the test_connection function
 test_connection()
