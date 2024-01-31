@@ -50,3 +50,35 @@ def test_connection():
             print("Connection closed.")
 
 test_connection()
+
+
+
+
+# This function sends an SQL query to the database
+def test_query_one():
+
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="jeony",
+        user="jeony",
+        password="eye362eye")
+
+    cur = conn.cursor()
+
+    firstsql = "SELECT lat, lon FROM us_cities WHERE abb = 'Northfield' "
+    
+    cur.execute( firstsql )
+
+    # fetchone() returns one row that matches your quer
+    row = cur.fetchone()
+
+    if row:
+        print("Northfield's latitude is {row[1]}, Longitude {row[2]}")
+    else:
+        print("Northfield is not in the database.")
+
+    cur.close()
+    conn.close()
+
+test_query_one()
