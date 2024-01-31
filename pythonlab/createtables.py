@@ -16,7 +16,6 @@ def test_connection():
 
     return None
 
-
     drop_states_sql = """ DROP TABLE IF EXISTS states; """
     create_states_sql = """
         CREATE TABLE states (state text, abbreviation text);
@@ -68,7 +67,7 @@ def test_query_one():
     row = cur.fetchone()
 
     if row:
-        print("Northfield's latitude is {row[1]}, Longitude {row[2]}")
+        print("Northfield's latitude is {row[0]}, Longitude {row[1]}")
     else:
         print("Northfield is not in the database.")
 
@@ -76,3 +75,29 @@ def test_query_one():
     conn.close()
 
 test_query_one()
+
+
+
+def test_query_two():
+
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="jeony",
+        user="jeony",
+        password="eye362eye")
+
+    cur = conn.cursor()
+
+    secondsql = "SELECT * FROM us_cities WHERE Max(population) "
+    
+    cur.execute( secondsql )
+    row = cur.fetchone()
+
+    if row:
+        print("{row[0]} has the most population.")
+
+    cur.close()
+    conn.close()
+
+test_query_two()
