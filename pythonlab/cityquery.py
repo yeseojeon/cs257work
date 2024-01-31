@@ -81,7 +81,8 @@ def test_query_three():
 
 test_query_three()
 
-
+#WRONG !!
+'''
 def test_query_four():
 
     conn = psycopg2.connect(
@@ -107,3 +108,67 @@ def test_query_four():
     conn.close()
 
 test_query_four()
+'''
+
+import psycopg2
+
+def test_query_four():
+
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="jeony",
+        user="jeony",
+        password="eye362eye")
+
+    cur = conn.cursor()
+
+    fourthsql = "SELECT city FROM us_cities ORDER BY lat DESC, lon ASC"
+    
+    cur.execute(fourthsql)
+    rows = cur.fetchall()
+
+    if rows:
+        north_city = rows[0][0]
+        east_city = rows[-1][0]
+        south_city = rows[-2][0]
+        west_city = rows[1][0]
+
+        print("The names of the cities furthest North, furthest East, furthest South, and furthest West are respectively:")
+        print(f"North: {north_city}")
+        print(f"East: {east_city}")
+        print(f"South: {south_city}")
+        print(f"West: {west_city}")
+
+    cur.close()
+    conn.close()
+
+test_query_four()
+
+
+
+'''
+def test_query_five():
+
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="jeony",
+        user="jeony",
+        password="eye362eye")
+
+    cur = conn.cursor()
+
+    fifthsql = "SELECT city, state FROM us_cities WHERE state = 'Minnesota' ORDER BY population ASC;"
+    
+    cur.execute( fifthsql )
+    row = cur.fetchone()
+
+    if row:
+        print(row[0] + " has the least population in MN.")
+
+    cur.close()
+    conn.close()
+
+test_query_five()
+'''
