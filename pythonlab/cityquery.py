@@ -43,13 +43,13 @@ def test_query_two():
 
     cur = conn.cursor()
 
-    secondsql = "SELECT Max(population), city FROM us_cities "
+    secondsql = "SELECT * FROM us_cities ORDER BY population DESC;"
     
     cur.execute( secondsql )
     row = cur.fetchone()
 
     if row:
-        print("{row[1]} has the most population.")
+        print("{row[0]} has the most population.")
 
     cur.close()
     conn.close()
