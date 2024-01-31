@@ -80,3 +80,30 @@ def test_query_three():
     conn.close()
 
 test_query_three()
+
+
+def test_query_four():
+
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="jeony",
+        user="jeony",
+        password="eye362eye")
+
+    cur = conn.cursor()
+
+    fourthsql = "SELECT city FROM us_cities ORDER BY latitude DESC, longitude DESC"
+    
+    cur.execute( fourthsql )
+    row = cur.fetchall()
+
+    if row:
+        print("The names of the cities furthest North, \
+              furthest East, furthest South, and furthest \
+              West are respectively: " + row[0][0] + row[-1][0] + row[-2][0] + row[1][0])
+
+    cur.close()
+    conn.close()
+
+test_query_four()
