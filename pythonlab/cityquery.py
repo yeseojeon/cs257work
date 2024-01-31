@@ -93,7 +93,7 @@ def test_query_four():
 
     cur = conn.cursor()
 
-    fourthsql = "SELECT city FROM us_cities ORDER BY lat DESC, lon DESC"
+    fourthsql = "SELECT city FROM us_cities ORDER BY lat DESC, lon ASC"
     
     cur.execute( fourthsql )
     row = cur.fetchall()
