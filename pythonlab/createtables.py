@@ -66,7 +66,7 @@ def test_query_one():
 
     cur = conn.cursor()
 
-    firstsql = "SELECT lat, lon FROM us_cities WHERE abb = 'Northfield' "
+    firstsql = "SELECT lat, lon FROM us_cities WHERE city = 'Northfield' "
     
     cur.execute( firstsql )
 
