@@ -2,14 +2,20 @@ import psycopg2
 from psycopg2 import sql
 
 def test_connection():
-    try:
-        conn = psycopg2.connect(
-            host="localhost",
-            port=5432,
-            database="jeony",
-            user="jeony",
-            password="eye362eye"
-        )
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="mlepinski",
+        user="mlepinski",
+        password="puppy837spoon")
+
+    if conn is not None:
+        print( "Connection Worked!" )
+    else:
+        print( "Problem with Connection" )
+
+    return None
+
 
         drop_states_sql = """ DROP TABLE IF EXISTS states; """
         create_states_sql = """
@@ -35,9 +41,8 @@ def test_connection():
         cur.execute(sql.SQL(create_cities_sql))
 
         conn.commit()
-
         conn.close()
-
+        
 test_connection()
 
 
