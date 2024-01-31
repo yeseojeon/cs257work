@@ -17,21 +17,21 @@ def test_connection():
     return None
 
 
-        drop_states_sql = """ DROP TABLE IF EXISTS states; """
-        create_states_sql = """
-            CREATE TABLE states (state text, abbreviation text);
-        """
+    drop_states_sql = """ DROP TABLE IF EXISTS states; """
+    create_states_sql = """
+        CREATE TABLE states (state text, abbreviation text);
+    """
 
-        drop_cities_sql = """ DROP TABLE IF EXISTS us_cities; """
-        create_cities_sql = """
-            CREATE TABLE us_cities (
-                city text,
-                state text,
-                population int,
-                lat real,
-                lon real
-            );
-        """
+    drop_cities_sql = """ DROP TABLE IF EXISTS us_cities; """
+    create_cities_sql = """
+        CREATE TABLE us_cities (
+            city text,
+            state text,
+            population int,
+            lat real,
+            lon real
+        );
+    """
 
         cur = conn.cursor()
         cur.execute(sql.SQL(drop_states_sql))
