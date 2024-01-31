@@ -21,7 +21,7 @@ def test_query_one():
     row = cur.fetchone()
 
     if row:
-        print("Northfield's latitude is {row[0]}, longitude {row[1]}")
+        print("Northfield's latitude is" + row[0] + ", longitude is" + row[1])
     else:
         print("Northfield is not in the database.")
 
