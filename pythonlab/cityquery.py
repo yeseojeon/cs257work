@@ -1,26 +1,6 @@
 import psycopg2
 from psycopg2 import sql
 
-def test_connection():
-    conn = psycopg2.connect(
-        host="localhost",
-        port=5432,
-        database="jeony",
-        user="jeony",
-        password="eye362eye")
-
-    if conn is not None:
-        print( "Connection Worked!" )
-    else:
-        print( "Problem with Connection" )
-
-    return None
-
-test_connection()
-
-
-
-
 # This function sends an SQL query to the database
 def test_query_one():
 
@@ -63,13 +43,13 @@ def test_query_two():
 
     cur = conn.cursor()
 
-    secondsql = "SELECT * FROM us_cities WHERE Max(population) "
+    secondsql = "SELECT Max(population), city FROM us_cities "
     
     cur.execute( secondsql )
     row = cur.fetchone()
 
     if row:
-        print("{row[0]} has the most population.")
+        print("{row[1]} has the most population.")
 
     cur.close()
     conn.close()
