@@ -11,11 +11,6 @@ def test_connection():
             password="eye362eye"
         )
 
-        if conn is not None:
-            print("Connected!")
-        else:
-            print("Not Connected.")
-
         drop_states_sql = """ DROP TABLE IF EXISTS states; """
         create_states_sql = """
             CREATE TABLE states (state text, abbreviation text);
@@ -41,13 +36,7 @@ def test_connection():
 
         conn.commit()
 
-    except psycopg2.Error as e:
-        print("Error:", e)
-
-    finally:
-        if conn is not None:
-            conn.close()
-            print("Connection closed.")
+        conn.close()
 
 test_connection()
 
