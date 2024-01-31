@@ -99,9 +99,9 @@ def test_query_four():
     row = cur.fetchall()
 
     if row:
-        print("The names of the cities furthest North, \
-              furthest East, furthest South, and furthest \
-              West are respectively: " + row[0][0] + row[-1][0] + row[-2][0] + row[1][0])
+        print("The names of the cities furthest North,"
+              " furthest East, furthest South, and furthest"
+              " West are respectively: " + row[0][0] + row[-1][0] + row[-2][0] + row[1][0])
 
     cur.close()
     conn.close()
