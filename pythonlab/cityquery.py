@@ -49,7 +49,7 @@ def test_query_two():
     row = cur.fetchone()
 
     if row:
-        print(row[0] + "has the most population.")
+        print(row[0] + " has the most population.")
 
     cur.close()
     conn.close()
