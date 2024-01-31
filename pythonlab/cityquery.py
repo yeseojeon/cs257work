@@ -55,3 +55,28 @@ def test_query_two():
     conn.close()
 
 test_query_two()
+
+
+def test_query_three():
+
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="jeony",
+        user="jeony",
+        password="eye362eye")
+
+    cur = conn.cursor()
+
+    thirdsql = "SELECT city, state FROM us_cities WHERE state = 'Minnesota' ORDER BY population ASC;"
+    
+    cur.execute( thirdsql )
+    row = cur.fetchone()
+
+    if row:
+        print(row[0] + " has the least population in MN.")
+
+    cur.close()
+    conn.close()
+
+test_query_three()
