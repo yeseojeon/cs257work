@@ -33,15 +33,15 @@ def test_connection():
         );
     """
 
-        cur = conn.cursor()
-        cur.execute(sql.SQL(drop_states_sql))
-        cur.execute(sql.SQL(create_states_sql))
+    cur = conn.cursor()
+    cur.execute(sql.SQL(drop_states_sql))
+    cur.execute(sql.SQL(create_states_sql))
 
-        cur.execute(sql.SQL(drop_cities_sql))
-        cur.execute(sql.SQL(create_cities_sql))
+    cur.execute(sql.SQL(drop_cities_sql))
+    cur.execute(sql.SQL(create_cities_sql))
 
-        conn.commit()
-        conn.close()
+    conn.commit()
+    conn.close()
         
 test_connection()
 
