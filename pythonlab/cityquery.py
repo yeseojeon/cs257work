@@ -81,8 +81,8 @@ def test_query_three():
 
 test_query_three()
 
+
 #WRONG !!
-'''
 def test_query_four():
 
     conn = psycopg2.connect(
@@ -94,51 +94,17 @@ def test_query_four():
 
     cur = conn.cursor()
 
-    fourthsql = "SELECT city FROM us_cities ORDER BY lat DESC, lon ASC"
+    fourthsql = "SELECT city, lat, lon FROM us_cities ORDER BY lat DESC, lon ASC"
     
     cur.execute( fourthsql )
-    row = cur.fetchall()
-
-    if row:
-        print("The names of the cities furthest North,"
-              " furthest East, furthest South, and furthest"
-              " West are respectively: " + row[0][0] + " " + row[-1][0] + " " + row[-2][0] + " " + row[1][0])
-
-    cur.close()
-    conn.close()
-
-test_query_four()
-'''
-
-import psycopg2
-
-def test_query_four():
-
-    conn = psycopg2.connect(
-        host="localhost",
-        port=5432,
-        database="jeony",
-        user="jeony",
-        password="eye362eye")
-
-    cur = conn.cursor()
-
-    fourthsql = "SELECT city FROM us_cities ORDER BY lat DESC, lon ASC"
-    
-    cur.execute(fourthsql)
     rows = cur.fetchall()
 
     if rows:
-        north_city = rows[0][0]
-        east_city = rows[-1][0]
-        south_city = rows[-2][0]
-        west_city = rows[1][0]
-
-        print("The names of the cities furthest North, furthest East, furthest South, and furthest West are respectively:")
-        print(f"North: {north_city}")
-        print(f"East: {east_city}")
-        print(f"South: {south_city}")
-        print(f"West: {west_city}")
+        print("The names of the cities furthest North,"
+              " furthest East, furthest South, and furthest"
+              " West are respectively: " 
+              + rows[0][0] + " " + rows[-1][0] + " " + rows[-2][0] 
+              + " " + rows[1][0])
 
     cur.close()
     conn.close()
