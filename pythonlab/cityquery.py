@@ -154,7 +154,7 @@ def test_query_five():
 
     total_population = cur.fetchone()[0]
 
-    print("The total population of " + input_state + " is " + total_population)
+    print("The total population of " + input_state + " is " + str(total_population))
 
     cur.close()
     conn.close()
