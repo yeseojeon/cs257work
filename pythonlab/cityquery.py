@@ -121,10 +121,8 @@ test_query_four()
 
 
 
-
-'''
 def test_query_five():
-
+    
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
@@ -134,16 +132,31 @@ def test_query_five():
 
     cur = conn.cursor()
 
-    fifthsql = "SELECT city, state FROM us_cities WHERE state = 'Minnesota' ORDER BY population ASC;"
-    
-    cur.execute( fifthsql )
-    row = cur.fetchone()
+    input_state = input("Enter a full state name or a state abbreviation: ")
 
-    if row:
-        print(row[0] + " has the least population in MN.")
+    fifthsql = """
+    SELECT state
+    FROM states
+    WHERE abbreviation = %s
+    """
+
+    cur.execute(fifthsql, (input_state,))
+    
+    state_name = cur.fetchone() or (input_state,)
+
+    populationsql = """
+    SELECT SUM(population)
+    FROM us_cities 
+    WHERE state = %s
+    """
+
+    cur.execute(populationsql, state_name)
+
+    total_population = cur.fetchone()[0]
+
+    print("The total population of " + input_state + " is " + total_population)
 
     cur.close()
     conn.close()
 
 test_query_five()
-'''
