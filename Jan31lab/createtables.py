@@ -23,7 +23,7 @@ def test_connection():
 
     cur = conn.cursor()
     cur.execute(sql.SQL(drop_statepop_sql))
-    cur.execute(sql.SQL(create_statepops_sql))
+    cur.execute(sql.SQL(create_statepop_sql))
 
     conn.commit()
     conn.close()
