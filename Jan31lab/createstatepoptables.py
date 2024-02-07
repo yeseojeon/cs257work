@@ -10,15 +10,17 @@ def test_connection():
         password="eye362eye")
 
     if conn is not None:
-        print( "Connection Worked!" )
+        print("Connection Worked!")
     else:
-        print( "Problem with Connection" )
+        print("Problem with Connection")
 
-    return None
-
-    drop_statepop_sql = """ DROP TABLE IF EXISTS states; """
+    drop_statepop_sql = """ DROP TABLE IF EXISTS statepop; """
     create_statepop_sql = """
-        CREATE TABLE statepop (code text, state text, pop real);
+        CREATE TABLE statepop (
+            code text,
+            state text,
+            pop real
+        );
     """
 
     cur = conn.cursor()
@@ -27,6 +29,5 @@ def test_connection():
 
     conn.commit()
     conn.close()
-        
-test_connection()
 
+test_connection()
