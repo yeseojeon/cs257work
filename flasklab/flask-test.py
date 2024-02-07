@@ -21,6 +21,11 @@ def my_add(num1, num2):
     addition = int(num1) + int(num2)
     return str(addition)
 
+@app.route('/pop/abbrev')
+def my_pop(abbrev):
+    state = 
+
+
 if __name__ == '__main__':
     my_port = 5126
     app.run(host='0.0.0.0', port = my_port) 
