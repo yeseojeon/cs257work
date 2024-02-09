@@ -1,4 +1,6 @@
 import flask
+import psycopg2
+from psycopg2 import sql
 
 app = flask.Flask(__name__)
 
@@ -23,7 +25,25 @@ def my_add(num1, num2):
 
 @app.route('/pop/abbrev')
 def my_pop(abbrev):
-    state = 
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="jeony",
+        user="jeony",
+        password="eye362eye")
+
+    cur = conn.cursor()
+
+    populationsql = "SELECT * FROM statepop WHERE code = %s' "
+
+    cur.execute(populationsql, (abbrev,))
+
+    population = cur.fetchone()[2]
+
+    return str(population)
+
+    cur.close()
+    conn.close()
 
 
 if __name__ == '__main__':
