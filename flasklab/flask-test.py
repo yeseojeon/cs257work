@@ -23,7 +23,7 @@ def my_add(num1, num2):
     addition = int(num1) + int(num2)
     return str(addition)
 
-@app.route('/pop/abbrev')
+@app.route('/pop/<abbrev>')
 def my_pop(abbrev):
     conn = psycopg2.connect(
         host="localhost",
@@ -34,16 +34,16 @@ def my_pop(abbrev):
 
     cur = conn.cursor()
 
-    populationsql = "SELECT * FROM statepop WHERE code = %s' "
+    populationsql = "SELECT * FROM statepop WHERE code = %s "
 
     cur.execute(populationsql, (abbrev,))
 
     population = cur.fetchone()[2]
 
-    return str(population)
-
     cur.close()
     conn.close()
+
+    return str(population)
 
 
 if __name__ == '__main__':
