@@ -10,8 +10,8 @@ app = flask.Flask(__name__)
 def welcome():
     return render_template("labpart2.html")
 
-@app.route('/randsent/<name>/<verb>')
-def randsent(name, verb):
+@app.route('/randsent/<randomname>/<randomverb>')
+def randsent(randomname, randomverb):
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
@@ -21,11 +21,11 @@ def randsent(name, verb):
 
     cur = conn.cursor()
 
-    #generate a random name = name
+    #generate a random name
     listofnames = ["Drake", "Taylor Swift", "21Savage", "Frank Ocean", "Giveon", "SZA", "Tyla", "Muni Long"]
     randomname = random.choice(listofnames)
 
-    #generate a random verb = verb
+    #generate a random verb
     listofverbs = ["jump", "sing", "sleep", "rapp", "danc", "cry", "perform", "cook"]
     randomverb = random.choice(listofverbs)   
 
