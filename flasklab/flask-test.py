@@ -1,10 +1,47 @@
 import flask
 import psycopg2
 from psycopg2 import sql
+from flask import render_template
+import random
 
 app = flask.Flask(__name__)
 
-#
+@app.route('/')
+def welcome():
+    return render_template("labpart2.html")
+
+@app.route('/randsent/<name>/<verb>')
+def randsent(name, verb):
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="jeony",
+        user="jeony",
+        password="eye362eye")
+
+    cur = conn.cursor()
+
+    #generate a random name = name
+    listofnames = ["Drake", "Taylor Swift", "21Savage", "Frank Ocean", "Giveon", "SZA", "Tyla", "Muni Long"]
+    randomname = random.choice(listofnames)
+
+    #generate a random verb = verb
+    listofverbs = ["jump", "sing", "sleep", "rapp", "danc", "cry", "perform", "cook"]
+    randomverb = random.choice(listofverbs)   
+
+    randomstatesql = "SELECT state FROM states ORDER BY RAND() LIMIT 1;"
+
+    cur.execute(randomstatesql)
+
+    randomstate = cur.fetchone()[0]
+
+    cur.close()
+    conn.close()
+
+    random_sentence = randomname + " is " + randomverb + "ing in " + randomstate + "!"
+    return random_sentence
+
+
 @app.route('/hello')
 def my_function():
     return "Hello World!"
