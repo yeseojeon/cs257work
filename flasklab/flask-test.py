@@ -29,7 +29,7 @@ def randsent():
     listofverbs = ["jump", "sing", "sleep", "rapp", "danc", "cry", "perform", "cook"]
     randomverb = random.choice(listofverbs)   
 
-    randomstatesql = "SELECT state FROM states ORDER BY RAND() LIMIT 1;"
+    randomstatesql = "SELECT state FROM states ORDER BY RANDOM() LIMIT 1;"
 
     cur.execute(randomstatesql)
 
