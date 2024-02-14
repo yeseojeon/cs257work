@@ -10,8 +10,8 @@ app = flask.Flask(__name__)
 def welcome():
     return render_template("labpart2.html")
 
-@app.route('/randsent/<randomname>/<randomverb>')
-def randsent(randomname, randomverb):
+@app.route('/randsent')
+def randsent():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
