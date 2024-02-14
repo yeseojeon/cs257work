@@ -39,7 +39,7 @@ def randsent():
     conn.close()
 
     random_sentence = randomname + " is " + randomverb + "ing in " + randomstate + "!"
-    return render_template("labpart2.html", random_sentence)
+    return render_template("labpart2.html", random_sentence = random_sentence)
 
 
 @app.route('/hello')
