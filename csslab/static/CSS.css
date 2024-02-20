@@ -10,5 +10,7 @@
 
 .Button{
   text-align: center;
+  background-color: DarkSlateGrey;
+  color: white;
 }
 
