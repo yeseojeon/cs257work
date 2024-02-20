@@ -8,6 +8,7 @@ function surprise() {
 function changeSizeAndColor() {
   console.log("Mouse over title!");
   the_Title = document.getElementById("Move");
+  the_Title.style.backgroundColor = "RoyalBlue";
   the_Title.style.fontSize = "60px";
-  the_Title.style.color = "RoyalBlue";
+  the_Title.style.color = "White";
 }

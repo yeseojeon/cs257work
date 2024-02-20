@@ -1,6 +1,7 @@
 .Header{
   text-align: center;
-  color:black;
+  background-color: DarkSlateGrey;
+  color:white;
 }
 
 .Body{
@@ -10,7 +11,5 @@
 
 .Button{
   text-align: center;
-  background-color: DarkSlateGrey;
-  color: white;
 }
 
