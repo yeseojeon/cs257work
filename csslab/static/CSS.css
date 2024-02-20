@@ -11,6 +11,9 @@
 
 .Button{
   text-align: center;
-  font-size: large;
+  border: 2px solid black;
+  color: white;
+  background-color:darkslategrey;
+  padding: 15px 32px;
 }
 
